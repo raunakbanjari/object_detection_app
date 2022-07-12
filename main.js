@@ -1,5 +1,6 @@
 img = "";
 stats = "";
+objects = [];
 
 
 function setup(){
@@ -16,17 +17,22 @@ function preload(){
 
 function draw(){
     image(img , 0 , 0 , 800 , 450);
-    fill("red");
-    text("DOG" , 75 , 60);
-    stroke("red");
-    noFill();
-    rect(70 , 40 , 350 , 370);
 
-    fill("red");
-    text("CAT" , 390 , 100);
-    stroke("red");
-    noFill();
-    rect(330 , 70 , 400 , 370);
+    if(stats != ""){
+        for (i = 0; i < objects.length; i++){
+           document.getElementById("status").innerHTML = "Objects detected";
+           
+           fill("red");
+           percent = floor(objects[i].confidence * 100);
+           text(objects[i].label + " " + percent + "%" , objects[i].x , objects[i].y);
+           noFill();
+           stroke("red");
+           rect(objects[i].x ,  objects[i].y ,  objects[i].width ,  objects[i].height);
+        }
+    }
+
+   
+
 }
 
 function modelLoaded(){
@@ -40,6 +46,7 @@ function gotResults(error , results){
     }
     else{
         console.log(results);
+        objects = results;
     }
 
 }
