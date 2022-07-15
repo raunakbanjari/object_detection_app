@@ -9,7 +9,7 @@ width: 100%;
 margin: 0px;
 }
 
-#status
+#status , #no_of_objects  
 {
 font-size: 18px;
 }
@@ -17,5 +17,9 @@ canvas{
     border-color: solid 5px 5px black ;
     box-shadow: 1px 1px 38px navy;
     margin-top: 60px;
+}
+#start_button{
+    font-size: 18px;
+    margin-top: 23px;
 }
 
